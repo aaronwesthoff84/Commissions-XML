@@ -1,0 +1,13 @@
+---
+description: Prevents reading, committing, or suggesting XML files that are not part of the repository structure
+globs: `**/*.xml`
+alwaysApply: true
+---
+
+**Rule Content**:
+
+- My primary code editor is VS Code with Python extension
+- I use Chrome as my default browser for development
+- My project files are organized in ~/Projects/ directory
+- I prefer using terminal commands over GUI interactions when possible
+- Always use dark theme for any new applications or configurations

@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open Excel Workbook",
+      "type": "shell",
+      "command": "open",
+      "args": [
+        "${workspaceFolder}/SAP-Commissions-XML.xlsm"
+      ],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Export VBA Modules",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "Manual: In Excel VBA Editor, File > Export File for each module"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Check TODO Progress",
+      "type": "shell",
+      "command": "grep",
+      "args": [
+        "-c",
+        "\\[x\\]",
+        "${workspaceFolder}/TODO_XML.md"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -53,8 +53,8 @@ be committed to this repository. Keep such files local for testing only.
 
 ### 3.1 Setup & Baseline
 
-- [ ] Fork the original repo into personal or org GitHub account.
-- [ ] Create a working branch, e.g. `modernize-xml-v33`.
+- [X] Fork the original repo into personal or org GitHub account.
+- [X] Create a working branch, e.g. `modernize-xml-v33`.
 - [ ] Export the VBA modules from the current workbook (optional for diffing).
 - [ ] Verify that the original code compiles in the VBA editor
       (`Debug` → `Compile VBAProject`).

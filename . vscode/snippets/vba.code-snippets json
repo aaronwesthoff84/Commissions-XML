@@ -1,0 +1,88 @@
+{
+  "VBA Error Handler": {
+    "prefix": "vba-errhandler",
+    "body": [
+      "On Error GoTo ErrHandler",
+      "",
+      "${1:' Main logic here}",
+      "",
+      "CleanExit:",
+      "    Exit ${2|Sub,Function|}",
+      "",
+      "ErrHandler:",
+      "    Call LogError \"${3:ModuleName}\", \"${4:ProcedureName}\", Err.Number, Err.Description, \"${5:NodeName}\"",
+      "    Resume CleanExit"
+    ],
+    "description": "Standard VBA error handler with logging"
+  },
+  "VBA Parse Procedure": {
+    "prefix": "vba-parse",
+    "body": [
+      "Public Sub Parse_${1:NodeName}(ByVal oNode As MSXML2.IXMLDOMNode)",
+      "    On Error GoTo ErrHandler",
+      "    ",
+      "    Dim ws As Worksheet",
+      "    Set ws = ThisWorkbook.Worksheets(\"${2:SheetName}\")",
+      "    ",
+      "    Dim lRow As Long",
+      "    lRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1",
+      "    ",
+      "    ${3:' Parse attributes and child nodes}",
+      "    ",
+      "CleanExit:",
+      "    Exit Sub",
+      "    ",
+      "ErrHandler:",
+      "    Call LogError \"${4:ModuleName}\", \"Parse_${1:NodeName}\", Err.Number, Err.Description, oNode.nodeName",
+      "    Resume CleanExit",
+      "End Sub"
+    ],
+    "description": "Template for XML node parsing procedure"
+  },
+  "VBA Log Error": {
+    "prefix": "vba-logerror",
+    "body": [
+      "Call LogError \"${1:ModuleName}\", \"${2:ProcedureName}\", Err.Number, Err.Description, \"${3:Context}\""
+    ],
+    "description": "Log error call"
+  },
+  "VBA Safe Attribute Read": {
+    "prefix": "vba-safeattr",
+    "body": [
+      "If Not oNode.Attributes.getNamedItem(\"${1:AttributeName}\") Is Nothing Then",
+      "    ${2:varName} = oNode.Attributes.getNamedItem(\"${1:AttributeName}\").Text",
+      "End If"
+    ],
+    "description": "Safely read XML attribute with null check"
+  },
+  "VBA XML Node Loop": {
+    "prefix": "vba-nodeloop",
+    "body": [
+      "Dim oChild As MSXML2.IXMLDOMNode",
+      "For Each oChild In oNode.childNodes",
+      "    Select Case oChild.nodeName",
+      "        Case \"${1:NodeName}\"",
+      "            ${2:' Handle node}",
+      "        Case Else",
+      "            ' Unsupported node type",
+      "    End Select",
+      "Next oChild"
+    ],
+    "description": "Loop through XML child nodes with Select Case"
+  },
+  "VBA Module Header": {
+    "prefix": "vba-header",
+    "body": [
+      "' ============================================================================",
+      "' Module: ${1:ModuleName}",
+      "' Purpose: ${2:Description}",
+      "' Author: ${3:Your Name}",
+      "' Date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "' ============================================================================",
+      "",
+      "Option Explicit",
+      ""
+    ],
+    "description": "Standard module header"
+  }
+}

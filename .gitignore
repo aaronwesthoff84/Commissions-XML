@@ -1,0 +1,34 @@
+# Customer/confidential XML files
+*.xml
+!sample*.xml
+!test*.xml
+
+# Excel temporary files
+~$*.xlsm
+~$*.xlsx
+~$*.xls
+
+# VBA export directory (optional - if you export modules)
+/vba-export/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Backup files
+*.bak
+*.backup
+
+# Log files
+*.log
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+!.vscode/snippets/
+.idea/
